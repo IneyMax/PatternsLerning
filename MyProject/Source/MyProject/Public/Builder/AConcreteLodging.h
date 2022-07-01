@@ -1,18 +1,18 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ILodging.h"
+#include "Builder/Interface/ILodging.h"
 #include "GameFramework/Actor.h"
 #include "AConcreteLodging.generated.h"
 
 UCLASS()
-class MYPROJECT_API AAConcreteLodging : public AActor, public ILodging
+class MYPROJECT_API AConcreteLodging : public AActor, public ILodging
 {
 	GENERATED_BODY()
 
 public:	
 	// Sets default values for this actor's properties
-	AAConcreteLodging();
+	AConcreteLodging();
 
 private:
 	FString _LobbyArea;

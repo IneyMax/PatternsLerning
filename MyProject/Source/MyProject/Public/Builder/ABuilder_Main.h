@@ -2,7 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Builder_Main.generated.h"
+#include "ABuilder_Main.generated.h"
 
 UCLASS()
 class MYPROJECT_API ABuilder_Main : public AActor

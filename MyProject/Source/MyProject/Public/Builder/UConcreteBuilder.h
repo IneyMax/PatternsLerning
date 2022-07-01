@@ -1,21 +1,19 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
-#include "IBuilder.h"
 #include "UObject/NoExportTypes.h"
+#include "Builder/Interface/IBuilder.h"
 #include "UConcreteBuilder.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class MYPROJECT_API UUConcreteBuilder : public UObject, public IBuilder
+class MYPROJECT_API UConcreteBuilder : public UObject, public IBuilder
 {
 	GENERATED_BODY()
 
-	UUConcreteBuilder();
+	UConcreteBuilder();
 
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Hotel Lodging")
