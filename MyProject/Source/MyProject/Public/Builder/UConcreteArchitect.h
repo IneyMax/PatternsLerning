@@ -2,7 +2,7 @@
 
 #include "Interface/IArchitect.h"
 #include "CoreMinimal.h"
-#include "Interface/IBuilder.h"
+#include "UConcreteBuilder.h"
 #include "UConcreteArchitect.generated.h"
 
 UCLASS()
@@ -14,18 +14,18 @@ public:
 	UConcreteArchitect();
 
 private:
-	IBuilder* CurrentBuilder;
+	UPROPERTY()
+	UConcreteBuilder* CurrentBuilder;
+	
+	// IBuilder* BuilderInterface; TODO: May be add?
 
 public:
-	UFUNCTION(BlueprintCallable, Category=ConcreteArchitect)
+	//UFUNCTION(BlueprintCallable, Category=ConcreteArchitect)
 	virtual void ConstructLodging_Implementation() override;
 
-	UFUNCTION(BlueprintCallable, Category=ConcreteArchitect)
-	virtual void SetLodgingBuilder_Implementation(UObject* Builder) override;
+	//UFUNCTION(BlueprintCallable, Category=ConcreteArchitect)
+	virtual void SetLodgingBuilder_Implementation(UConcreteBuilder* Builder) override;
 
-	UFUNCTION(BlueprintCallable, Category=ConcreteArchitect)
+	//UFUNCTION(BlueprintCallable, Category=ConcreteArchitect)
 	virtual AConcreteLodging* GetLodging_Implementation() override;
-
-private:
-	virtual void PostLoad() override;
 };

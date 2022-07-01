@@ -1,59 +1,56 @@
 #pragma once
 
 #include "Builder/UConcreteBuilder.h"
-#include "Builder/Interface/IBuilder.h"
 
 UConcreteBuilder::UConcreteBuilder()
 {
+
+	UE_LOG(LogTemp, Warning, TEXT("UConcreteBuilder::Construct"));
+	/*
+	Lodging	= GetWorld()->SpawnActor<AConcreteLodging>(AConcreteLodging::StaticClass());
+	if (IsValid(Lodging))
+	{
+		GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Yellow, FString::Printf(TEXT("Builder creating: /n %s"), *Lodging->GetName()));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Lodging not create in Builder!"));
+	}
+	*/
 }
 
 void UConcreteBuilder::BuildLobbyArea_Implementation()
 {
-	if (!Lodging)
+	ILodging* LodgingInterface = Cast<ILodging>(Lodging);
+	if (LodgingInterface)
 	{
-		UE_LOG(LogTemp, Error, TEXT("BuildLobbyArea(): Lodging is NULL, make sure it's initialized."));
+		//Set the Lobby Area of the Lodging
+		LodgingInterface->Execute_SetLobbyArea(Lodging, "Grand Hall");
 		return;
 	}
 
-	//Set the Lobby Area of the Lodging
-	Lodging->SetLobbyArea("Grand Hall");
-
+	UE_LOG(LogTemp, Error, TEXT("BuildLobbyArea(): Lodging is NULL, make sure it's initialized."));
 }
 
 void UConcreteBuilder::BuildRooms_Implementation()
 {
-	if (!Lodging)
+	ILodging* LodgingInterface = Cast<ILodging>(Lodging);
+	if (LodgingInterface)
 	{
-		UE_LOG(LogTemp, Error, TEXT("BuildRooms(): Lodging is NULL, make sure it's initialized."));
+		//Set the Rooms of the Lodging
+		LodgingInterface->Execute_SetRooms(Lodging, "Luxury Suites");
 		return;
 	}
 
-	//Set the Rooms of the Lodging
-	Lodging->SetRooms("Luxury Suites");
-
-}
-
-void UConcreteBuilder::BuildRestaurants_Implementation()
-{
-	if (!Lodging)
-	{
-		UE_LOG(LogTemp, Error, TEXT("BuildRestaurants(): Lodging is NULL, make sure it's initialized."));
-		return;
-	}
-
-	//Set the Restaurants of the Lodging
-	Lodging->SetRestaurants("5 star Buffet");
+	UE_LOG(LogTemp, Error, TEXT("BuildRooms(): Lodging is NULL, make sure it's initialized."));
 
 }
 
 AConcreteLodging* UConcreteBuilder::GetLodging_Implementation()
 {
-	return Lodging;
-}
-
-void UConcreteBuilder::PostLoad()
-{
-	Super::PostLoad();
-	Lodging	= GetWorld()->SpawnActor<AConcreteLodging> (AConcreteLodging::StaticClass());
-	GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Yellow, FString::Printf(TEXT("%s Created"), *this->GetName()));
+	if (IsValid(Lodging))
+	{
+		return Lodging;
+	}
+	return nullptr;
 }

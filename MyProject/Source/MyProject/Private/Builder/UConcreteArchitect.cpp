@@ -4,36 +4,50 @@
 
 UConcreteArchitect::UConcreteArchitect()
 {
+	UE_LOG(LogTemp, Warning, TEXT("UConcreteArchitect::Construct"));
 }
 
 void UConcreteArchitect::ConstructLodging_Implementation()
 {
-	//Creates the buildings
-	CurrentBuilder->BuildLobbyArea();
-	CurrentBuilder->BuildRooms();
-	CurrentBuilder->BuildRestaurants();
-}
+	IBuilder* BuilderInterface = Cast<IBuilder>(CurrentBuilder);
+	if (BuilderInterface)
+	{
+		BuilderInterface->Execute_BuildRooms(CurrentBuilder);
+		BuilderInterface->Execute_BuildLobbyArea(CurrentBuilder);
+		return;
+	}
 
-void UConcreteArchitect::SetLodgingBuilder_Implementation(UObject* Builder)
-{
-	//Cast the passed Actor and set the Builder
-	CurrentBuilder = Cast<IBuilder>(Builder);
-
-	if (!Builder) //Log Error if cast fails
-		{
-			GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Red, TEXT("Invalid Cast! See Output log for more details"));
-			UE_LOG(LogTemp, Error, TEXT("SetLodgingBuilder(): The Actor is not a LodgingBuilder! Are you sure that the Actor implements	that interface?"));
-		}
+	UE_LOG(LogTemp, Error, TEXT("NOT constructed Lodging!"));
 }
 
 AConcreteLodging* UConcreteArchitect::GetLodging_Implementation()
 {
-	return CurrentBuilder->GetLodging();
+	IBuilder* BuilderInterface = Cast<IBuilder>(CurrentBuilder);
+	if (BuilderInterface)
+	{
+		return BuilderInterface->Execute_GetLodging(CurrentBuilder);
+	}
+	
+	UE_LOG(LogTemp, Error, TEXT("NOT constructed Lodging!"));
+	
+	return nullptr;
 }
 
-void UConcreteArchitect::PostLoad()
+
+void UConcreteArchitect::SetLodgingBuilder_Implementation(UConcreteBuilder* Builder)
 {
-	Super::PostLoad();
-	FString s = this->GetName();
-	GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Yellow, FString::Printf(TEXT("%s Created"), *this->GetName()));
+	if (IsValid(Builder))
+	{
+		IBuilder* BuilderInterface = Cast<IBuilder>(Builder);
+		if (BuilderInterface)
+		{
+			CurrentBuilder = Builder;
+			// TODO: Create self Lodging
+		}
+	}
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Red, TEXT("Invalid Cast! See Output log for more details"));
+		UE_LOG(LogTemp, Error, TEXT("SetLodgingBuilder(): The Actor is not a Builder or not have Builder Interface"));
+	}
 }

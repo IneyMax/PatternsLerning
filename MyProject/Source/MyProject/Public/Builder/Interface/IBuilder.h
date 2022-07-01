@@ -1,10 +1,11 @@
 ﻿#pragma once
 
 #include "CoreMinimal.h"
+#include "UObject/Interface.h"
 #include "IBuilder.generated.h"
 
 
-UINTERFACE(Blueprintable, BlueprintType)
+UINTERFACE(Blueprintable, MinimalAPI)
 class UBuilder: public UInterface
 {
 	GENERATED_BODY()
@@ -21,9 +22,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=IBuilder)
 	void BuildRooms();
-
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=IBuilder)
-	void BuildRestaurants();
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=IBuilder)
 	AConcreteLodging* GetLodging();

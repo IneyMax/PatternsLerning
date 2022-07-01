@@ -17,7 +17,13 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:
-	
+private:
 
+	//The Builder Actor
+	UPROPERTY(VisibleAnywhere, Category = "MainBuilder")
+	class UConcreteBuilder* UCurrentBuilder;
+
+	//The Engineer Actor
+	UPROPERTY(VisibleAnywhere, Category = "MainBuilder")
+	class UConcreteArchitect* UCurrentArchitect;
 };

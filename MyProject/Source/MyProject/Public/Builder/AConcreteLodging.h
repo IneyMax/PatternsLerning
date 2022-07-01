@@ -18,24 +18,19 @@ private:
 	FString _LobbyArea {"Test Area"};
 	
 	FString _Rooms { "Test Rooms" };
-	
-	FString _Restaurants { "Test Restaurants" } ;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
 public:
-	UFUNCTION(BlueprintCallable, Category=ConcreteLodging)
+	//UFUNCTION(BlueprintCallable, Category=ConcreteLodging)
 	virtual void SetLobbyArea_Implementation(const FString& LobbyArea) override;
 
-	UFUNCTION(BlueprintCallable, Category=ConcreteLodging)
+	//UFUNCTION(BlueprintCallable, Category=ConcreteLodging)
 	virtual void SetRooms_Implementation(const FString& Rooms) override;
 
-	UFUNCTION(BlueprintCallable, Category=ConcreteLodging)
-	virtual void SetRestaurants_Implementation(const FString& Restaurants) override;
-
-	UFUNCTION(BlueprintCallable, Category=ConcreteLodging)
+	//UFUNCTION(BlueprintCallable, Category=ConcreteLodging)
 	virtual void PrintToLogLodgingCharacteristics_Implementation() override;
 };
 

@@ -7,7 +7,6 @@ AConcreteLodging::AConcreteLodging()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
-
 }
 
 // Called when the game starts or when spawned
@@ -28,16 +27,11 @@ void AConcreteLodging::SetRooms_Implementation(const FString& Rooms)
 	_Rooms = Rooms;
 }
 
-void AConcreteLodging::SetRestaurants_Implementation(const FString& Restaurants)
-{
-	_Restaurants = Restaurants;
-}
 
 void AConcreteLodging::PrintToLogLodgingCharacteristics_Implementation()
 {
 	GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Yellow, FString::Printf(TEXT("%s"), *_LobbyArea));
 	GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Yellow, FString::Printf(TEXT("%s"), *_Rooms));
-	GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Yellow, FString::Printf(TEXT("%s"), *_Restaurants));
 }
 
 
