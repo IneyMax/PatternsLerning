@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Builder/AConcreteLodging.h"
 #include "IArchitect.generated.h"
 
 
@@ -23,5 +24,5 @@ public:
 	void SetLodgingBuilder(UObject* Builder);
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=IArchitect)
-	AActor* GetLodging();
+	AConcreteLodging* GetLodging();
 };

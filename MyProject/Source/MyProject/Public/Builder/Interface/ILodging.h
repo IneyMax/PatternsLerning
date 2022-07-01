@@ -24,6 +24,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=ILodging)
 	void SetRestaurants(const FString& Restaurants);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=ILodging)
+	void PrintToLogLodgingCharacteristics();
 };
 
 

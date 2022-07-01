@@ -14,7 +14,8 @@ AConcreteLodging::AConcreteLodging()
 void AConcreteLodging::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	FString s = this->GetName();
+	GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Yellow, FString::Printf(TEXT("%s Created"), *this->GetName()));
 }
 
 void AConcreteLodging::SetLobbyArea_Implementation(const FString& LobbyArea)
@@ -30,6 +31,13 @@ void AConcreteLodging::SetRooms_Implementation(const FString& Rooms)
 void AConcreteLodging::SetRestaurants_Implementation(const FString& Restaurants)
 {
 	_Restaurants = Restaurants;
+}
+
+void AConcreteLodging::PrintToLogLodgingCharacteristics_Implementation()
+{
+	GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Yellow, FString::Printf(TEXT("%s"), *_LobbyArea));
+	GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Yellow, FString::Printf(TEXT("%s"), *_Rooms));
+	GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Yellow, FString::Printf(TEXT("%s"), *_Restaurants));
 }
 
 

@@ -26,5 +26,5 @@ public:
 	void BuildRestaurants();
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=IBuilder)
-	AActor* GetLodging();
+	AConcreteLodging* GetLodging();
 };
