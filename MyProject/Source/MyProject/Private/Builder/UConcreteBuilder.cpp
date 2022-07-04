@@ -1,8 +1,7 @@
 #pragma once
 
 #include "Builder/UConcreteBuilder.h"
-#include "Builder/AConcreteLodging.h"
-#include "Builder/Interface/ILodging.h"
+#include "MyStaticClasses/CheckValidation.h"
 
 
 UConcreteBuilder::UConcreteBuilder()
@@ -10,13 +9,19 @@ UConcreteBuilder::UConcreteBuilder()
 	UE_LOG(LogTemp, Warning, TEXT("Construct: %s"), *this->GetName());
 }
 
+
+void UConcreteBuilder::CreateLodging_Implementation()
+{
+	Lodging	= GetWorld()->SpawnActor<AConcreteLodging>(UCurrentLodgingClass);
+}
+
+
 void UConcreteBuilder::BuildLobbyArea_Implementation()
 {
-	ILodging* LodgingInterface = Cast<ILodging>(Lodging);
-	if (LodgingInterface)
+	if (UCheckValidation::CheckValidationAndInterface(Lodging, ULodging::StaticClass()))
 	{
 		//Set the Lobby Area of the Lodging
-		LodgingInterface->Execute_SetLobbyArea(Lodging, "Grand Hall");
+		ILodging::Execute_SetLobbyArea(Lodging, "Grand Hall");
 		return;
 	}
 
@@ -26,11 +31,10 @@ void UConcreteBuilder::BuildLobbyArea_Implementation()
 
 void UConcreteBuilder::BuildRooms_Implementation()
 {
-	ILodging* LodgingInterface = Cast<ILodging>(Lodging);
-	if (LodgingInterface)
+	if (UCheckValidation::CheckValidationAndInterface(Lodging, ULodging::StaticClass()))
 	{
 		//Set the Rooms of the Lodging
-		LodgingInterface->Execute_SetRooms(Lodging, "Luxury Suites");
+		ILodging::Execute_SetRooms(Lodging, "Luxury Suites");
 		return;
 	}
 
@@ -48,8 +52,3 @@ AActor* UConcreteBuilder::GetLodging_Implementation()
 	return nullptr;
 }
 
-
-void UConcreteBuilder::CreateLodging_Implementation()
-{
-	Lodging	= GetWorld()->SpawnActor<AConcreteLodging>(UCurrentLodgingClass);
-}

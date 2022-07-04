@@ -1,10 +1,7 @@
 #pragma once
 
 #include "Builder/ABuilder_Main.h"
-
-#include "Builder/UConcreteArchitect.h"
-#include "Builder/UConcreteBuilder.h"
-#include "Builder/Interface/ILodging.h"
+#include "MyStaticClasses/CheckValidation.h"
 
 
 // Sets default values
@@ -22,47 +19,20 @@ void ABuilder_Main::BeginPlay()
 	UConcreteArchitect* UCurrentArchitect = NewObject<UConcreteArchitect>(this, UCurrentArchitectClass);
 	UConcreteBuilder* UCurrentBuilder = NewObject<UConcreteBuilder>(this, UCurrentBuilderClass);
 	
-	if (IsValid(UCurrentArchitect))
-	{
-		IArchitect* ArchitectInterface = Cast<IArchitect>(UCurrentArchitect);
-		if (ArchitectInterface)
+	if (UCheckValidation::CheckValidationAndInterface(UCurrentArchitect, UArchitect::StaticClass()))
 		{
-			if (IsValid(UCurrentBuilder))
+		if (UCheckValidation::CheckValidationAndInterface(UCurrentBuilder, UBuilder::StaticClass()))
 			{
-				IBuilder* BuilderInterface = Cast<IBuilder>(UCurrentBuilder);
-				if (BuilderInterface)
+			IArchitect::Execute_SetLodgingBuilder(UCurrentArchitect, UCurrentBuilder);
+			IArchitect::Execute_ConstructLodging(UCurrentArchitect);
+		
+			AActor* NewLodging = IArchitect::Execute_GetLodging(UCurrentArchitect);
+			if (UCheckValidation::CheckValidationAndInterface(NewLodging, ULodging::StaticClass()))
 				{
-					ArchitectInterface->Execute_SetLodgingBuilder(UCurrentArchitect, UCurrentBuilder);
-					ArchitectInterface->Execute_ConstructLodging(UCurrentArchitect);
-					AActor* NewLodging = ArchitectInterface->Execute_GetLodging(UCurrentArchitect);
-					if (IsValid(NewLodging))
-					{
-						ILodging* LodgingInterface = Cast<ILodging>(NewLodging);
-						if (LodgingInterface)
-						{
-							LodgingInterface->Execute_PrintToLogLodgingCharacteristics(NewLodging);
-						}
-						NewLodging->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
-					}
+					ILodging::Execute_PrintToLogLodgingCharacteristics(NewLodging);
 				}
-				else
-				{
-					UE_LOG(LogTemp, Error, TEXT("Not find Builder Interface in %s"), *UCurrentBuilder->GetName());
-				}
-			}
-			else
-			{
-				UE_LOG(LogTemp, Error, TEXT("%s not valid!"), *UCurrentBuilder->GetName());
+			
+			NewLodging->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
 			}
 		}
-		else
-		{
-			UE_LOG(LogTemp, Error, TEXT("Not find Architect Interface in %s"), *UCurrentArchitect->GetName());
-		}
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("%s not valid!"), *UCurrentArchitect->GetName());
-	}
-
 }

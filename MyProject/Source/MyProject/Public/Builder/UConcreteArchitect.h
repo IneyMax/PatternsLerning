@@ -17,12 +17,9 @@ private:
 	UObject* CurrentBuilder;
 
 public:
-	//UFUNCTION(BlueprintCallable, Category=ConcreteArchitect)
 	virtual void ConstructLodging_Implementation() override;
-
-	//UFUNCTION(BlueprintCallable, Category=ConcreteArchitect)
+	
 	virtual AActor* GetLodging_Implementation() override;
-
-	//UFUNCTION(BlueprintCallable, Category=ConcreteArchitect)
+	
 	virtual void SetLodgingBuilder_Implementation(UObject* Builder) override;
 };

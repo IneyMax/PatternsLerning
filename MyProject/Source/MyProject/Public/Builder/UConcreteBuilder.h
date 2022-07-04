@@ -2,8 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "AConcreteLodging.h"
-#include "UObject/NoExportTypes.h"
-#include "Builder/Interface/IBuilder.h"
+#include "Interface/IBuilder.h"
 #include "UConcreteBuilder.generated.h"
 
 /**
@@ -25,15 +24,11 @@ protected:
 	TSubclassOf<AConcreteLodging> UCurrentLodgingClass = AConcreteLodging::StaticClass();
 
 public:
-	//UFUNCTION(BlueprintCallable, Category=ConcreteBuilder)
-	virtual void BuildLobbyArea_Implementation() override;
-
-	//UFUNCTION(BlueprintCallable, Category=ConcreteBuilder)
-	virtual void BuildRooms_Implementation() override;
-
-	//UFUNCTION(BlueprintCallable, Category=ConcreteBuilder)
-	virtual AActor* GetLodging_Implementation() override;
-
-	//UFUNCTION(BlueprintCallable, Category=ConcreteBuilder)
 	virtual void CreateLodging_Implementation() override;
+	
+	virtual void BuildLobbyArea_Implementation() override;
+	
+	virtual void BuildRooms_Implementation() override;
+	
+	virtual AActor* GetLodging_Implementation() override;
 };
