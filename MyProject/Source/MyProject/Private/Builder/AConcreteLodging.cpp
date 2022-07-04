@@ -7,6 +7,7 @@ AConcreteLodging::AConcreteLodging()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
+	UE_LOG(LogTemp, Warning, TEXT("Construct: %s"), *this->GetName());
 }
 
 // Called when the game starts or when spawned

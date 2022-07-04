@@ -14,9 +14,11 @@ public:
 	// Sets default values for this actor's properties
 	AConcreteLodging();
 
-private:
+protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "LodgingParameters")
 	FString _LobbyArea {"Test Area"};
-	
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "LodgingParameters")
 	FString _Rooms { "Test Rooms" };
 
 protected:

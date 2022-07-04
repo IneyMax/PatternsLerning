@@ -2,8 +2,6 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
-#include "Builder/AConcreteLodging.h"
-#include "Builder/UConcreteBuilder.h"
 #include "IArchitect.generated.h"
 
 
@@ -23,8 +21,8 @@ public:
 	void ConstructLodging();
 	
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=IArchitect)
-	void SetLodgingBuilder(UConcreteBuilder* Builder);
+	void SetLodgingBuilder(UObject* Builder);
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=IArchitect)
-	AConcreteLodging* GetLodging();
+	AActor* GetLodging();
 };

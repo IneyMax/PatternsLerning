@@ -24,5 +24,8 @@ public:
 	void BuildRooms();
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=IBuilder)
-	AConcreteLodging* GetLodging();
+	AActor* GetLodging();
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=IBuilder)
+	void CreateLodging();
 };

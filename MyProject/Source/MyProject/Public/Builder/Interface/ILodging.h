@@ -26,16 +26,3 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=ILodging)
 	void PrintToLogLodgingCharacteristics();
 };
-
-
-	/*
-
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=Lodging)
-	void SetLobbyArea(FString LArea);
-
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=Lodging)
-	void SetRooms(FString Rooms);
-	
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category=Lodging)
-	void SetRestaurants(FString Restaurants);
-	*/

@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable)
 class MYPROJECT_API UConcreteBuilder : public UObject, public IBuilder
 {
 	GENERATED_BODY()
@@ -18,8 +18,12 @@ class MYPROJECT_API UConcreteBuilder : public UObject, public IBuilder
 
 private:
 	UPROPERTY(VisibleAnywhere, Category = "ConstructedLodging")
-	AConcreteLodging* Lodging;
-	
+	AActor* Lodging;
+
+protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "ConstructedLodging")
+	TSubclassOf<AConcreteLodging> UCurrentLodgingClass = AConcreteLodging::StaticClass();
+
 public:
 	//UFUNCTION(BlueprintCallable, Category=ConcreteBuilder)
 	virtual void BuildLobbyArea_Implementation() override;
@@ -28,5 +32,8 @@ public:
 	virtual void BuildRooms_Implementation() override;
 
 	//UFUNCTION(BlueprintCallable, Category=ConcreteBuilder)
-	virtual AConcreteLodging* GetLodging_Implementation() override;
+	virtual AActor* GetLodging_Implementation() override;
+
+	//UFUNCTION(BlueprintCallable, Category=ConcreteBuilder)
+	virtual void CreateLodging_Implementation() override;
 };

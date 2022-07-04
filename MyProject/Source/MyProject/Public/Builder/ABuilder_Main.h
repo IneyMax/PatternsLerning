@@ -1,6 +1,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "UConcreteArchitect.h"
+#include "UConcreteBuilder.h"
 #include "GameFramework/Actor.h"
 #include "ABuilder_Main.generated.h"
 
@@ -16,14 +18,12 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-private:
-
+	
 	//The Builder Actor
-	UPROPERTY(VisibleAnywhere, Category = "MainBuilder")
-	class UConcreteBuilder* UCurrentBuilder;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MainBuilder")
+	TSubclassOf<UConcreteBuilder> UCurrentBuilderClass = UConcreteBuilder::StaticClass();
 
 	//The Engineer Actor
-	UPROPERTY(VisibleAnywhere, Category = "MainBuilder")
-	class UConcreteArchitect* UCurrentArchitect;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MainBuilder")
+	TSubclassOf<UConcreteArchitect> UCurrentArchitectClass = UConcreteArchitect::StaticClass();
 };

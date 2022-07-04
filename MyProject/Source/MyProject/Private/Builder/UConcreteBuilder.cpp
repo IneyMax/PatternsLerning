@@ -1,22 +1,13 @@
 #pragma once
 
 #include "Builder/UConcreteBuilder.h"
+#include "Builder/AConcreteLodging.h"
+#include "Builder/Interface/ILodging.h"
+
 
 UConcreteBuilder::UConcreteBuilder()
 {
-
-	UE_LOG(LogTemp, Warning, TEXT("UConcreteBuilder::Construct"));
-	/*
-	Lodging	= GetWorld()->SpawnActor<AConcreteLodging>(AConcreteLodging::StaticClass());
-	if (IsValid(Lodging))
-	{
-		GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Yellow, FString::Printf(TEXT("Builder creating: /n %s"), *Lodging->GetName()));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("Lodging not create in Builder!"));
-	}
-	*/
+	UE_LOG(LogTemp, Warning, TEXT("Construct: %s"), *this->GetName());
 }
 
 void UConcreteBuilder::BuildLobbyArea_Implementation()
@@ -32,6 +23,7 @@ void UConcreteBuilder::BuildLobbyArea_Implementation()
 	UE_LOG(LogTemp, Error, TEXT("BuildLobbyArea(): Lodging is NULL, make sure it's initialized."));
 }
 
+
 void UConcreteBuilder::BuildRooms_Implementation()
 {
 	ILodging* LodgingInterface = Cast<ILodging>(Lodging);
@@ -46,11 +38,18 @@ void UConcreteBuilder::BuildRooms_Implementation()
 
 }
 
-AConcreteLodging* UConcreteBuilder::GetLodging_Implementation()
+
+AActor* UConcreteBuilder::GetLodging_Implementation()
 {
 	if (IsValid(Lodging))
 	{
 		return Lodging;
 	}
 	return nullptr;
+}
+
+
+void UConcreteBuilder::CreateLodging_Implementation()
+{
+	Lodging	= GetWorld()->SpawnActor<AConcreteLodging>(UCurrentLodgingClass);
 }
