@@ -13,6 +13,7 @@ class MYPROJECT_API UPotionShop : public UObject
 {
 	GENERATED_BODY()
 
+public:
 	//Create Potion and returns it. It's pure virtual, so it doesn't need an implementation in this class
 	virtual	APotion* ConcoctPotion(FString PotionSKU) PURE_VIRTUAL(APotionShop::ConcoctPotion, return nullptr;);
 

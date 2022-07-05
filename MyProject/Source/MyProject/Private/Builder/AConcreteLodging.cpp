@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Builder/AConcreteLodging.h"
 
 // Sets default values

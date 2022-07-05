@@ -37,8 +37,8 @@ public:
 	//Bubble this potion
 	void Bubble();
 
-	//Brew this potion virtual
-	void Brew();
+	//Brew this potion
+	virtual void Brew();
 
 	//Bottle this potion
 	void Bottle();

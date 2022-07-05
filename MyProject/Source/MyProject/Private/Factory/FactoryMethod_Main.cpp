@@ -1,7 +1,7 @@
-#pragma once
-
 #include "Factory/FactoryMethod_Main.h"
 #include "Factory/Potion.h"
+#include "Factory/OuterRealmPotionShop.h"
+
 
 // Sets default values
 AFactoryMethod_Main::AFactoryMethod_Main()
@@ -14,13 +14,16 @@ void AFactoryMethod_Main::BeginPlay()
 {
 	Super::BeginPlay();
 
-	/*
-	//Create the Shops
-	APotionShop* OuterRealmShop	= GetWorld()->SpawnActor<AOuterRealmPotionShop>(AOuterRealmPotionShop::StaticClass());
-	APotionShop* InnerRealmShop	= GetWorld()->SpawnActor<AInnerRealmPotionShop>(AInnerRealmPotionShop::StaticClass());
 
+	//Create the Shops
+	//UPotionShop* OuterRealmShop	= GetWorld()->SpawnActor<UOuterRealmPotionShop>(UOuterRealmPotionShop::StaticClass());
+	UPotionShop* InnerRealmShop	= NewObject<UOuterRealmPotionShop>(UOuterRealmPotionShop::StaticClass());
+		//GetWorld()->SpawnActor<UOuterRealmPotionShop>(UOuterRealmPotionShop::StaticClass());
+	
 	//Create an Outer Health Potion and log its name
-	APotion* Potion = OuterRealmShop->OrderPotion("Health"); 
+	//APotion* Potion = OuterRealmShop->OrderPotion("Health");
+	//Create an Inner Health Potion and log its name
+	APotion* Potion = InnerRealmShop->OrderPotion("Health");
 	
 	GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Yellow, FString::Printf(TEXT("Potion is %s"), *Potion->GetPotionName()));
 
@@ -38,6 +41,5 @@ void AFactoryMethod_Main::BeginPlay()
 
 	//Create an Inner Health Potion and log its name Potion = InnerRealmShop->OrderPotion("Skill");
 	GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Yellow, FString::Printf(TEXT("Potion is %s"), *Potion->GetPotionName()));
-	*/
 }
 

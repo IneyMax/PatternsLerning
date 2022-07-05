@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Factory/PotionShop.h"
 
 APotion* UPotionShop::OrderPotion(FString Category)

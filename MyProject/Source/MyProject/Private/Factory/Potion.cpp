@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Factory/Potion.h"
 
 // Sets default values

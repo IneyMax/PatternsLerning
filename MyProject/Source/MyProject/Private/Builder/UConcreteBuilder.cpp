@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Builder/UConcreteBuilder.h"
 #include "MyStaticClasses/CheckValidation.h"
 

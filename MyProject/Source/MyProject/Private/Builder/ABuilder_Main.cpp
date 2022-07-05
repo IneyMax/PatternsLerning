@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Builder/ABuilder_Main.h"
 #include "MyStaticClasses/CheckValidation.h"
 
