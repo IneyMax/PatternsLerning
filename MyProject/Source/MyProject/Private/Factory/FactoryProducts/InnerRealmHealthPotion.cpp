@@ -1,5 +1,5 @@
-#include "Factory/InnerRealmHealthPotion.h"
 
+#include "Factory/FactoryProducts/InnerRealmHealthPotion.h"
 
 void AInnerRealmHealthPotion::BeginPlay()
 {
@@ -16,6 +16,6 @@ void AInnerRealmHealthPotion::BeginPlay()
 
 void AInnerRealmHealthPotion::Brew()
 {
-	//Log the brewing type
+	// Log the brewing type
 	GEngine->AddOnScreenDebugMessage(-1,	15.f,	FColor::Yellow, TEXT("Brewing at High Temperature"));
 }

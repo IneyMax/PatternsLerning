@@ -1,14 +1,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Factory/Potion.h"
-#include "InnerRealmPowerPotion.generated.h"
+#include "Potion.h"
+#include "InnerRealmHealthPotion.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class MYPROJECT_API AInnerRealmPowerPotion : public APotion
+class MYPROJECT_API AInnerRealmHealthPotion : public APotion
 {
 	GENERATED_BODY()
 	

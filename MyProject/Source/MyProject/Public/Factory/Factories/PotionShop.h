@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Potion.h"
+#include "Factory/FactoryProducts/Potion.h"
 #include "UObject/NoExportTypes.h"
 #include "PotionShop.generated.h"
 

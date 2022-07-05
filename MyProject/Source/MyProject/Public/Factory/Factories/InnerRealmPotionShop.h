@@ -1,7 +1,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Factory/PotionShop.h"
+#include "PotionShop.h"
+#include "Factory/FactoryProducts/Potion.h"
 #include "InnerRealmPotionShop.generated.h"
 
 /**

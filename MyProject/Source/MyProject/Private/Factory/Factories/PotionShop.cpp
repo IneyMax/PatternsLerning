@@ -1,4 +1,6 @@
-#include "Factory/PotionShop.h"
+
+#include "Factory/Factories/PotionShop.h"
+#include "Factory/FactoryProducts/Potion.h"
 
 APotion* UPotionShop::OrderPotion(FString Category)
 {

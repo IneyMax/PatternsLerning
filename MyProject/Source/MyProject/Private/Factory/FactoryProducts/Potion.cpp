@@ -1,4 +1,5 @@
-#include "Factory/Potion.h"
+
+#include "Factory/FactoryProducts/Potion.h"
 
 // Sets default values
 APotion::APotion()
@@ -12,7 +13,6 @@ APotion::APotion()
 void APotion::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 void APotion::Boil()

@@ -4,7 +4,7 @@
 
 UConcreteBuilder::UConcreteBuilder()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Construct: %s"), *this->GetName());
+	// UE_LOG(LogTemp, Warning, TEXT("Construct: %s"), *this->GetName());
 }
 
 
