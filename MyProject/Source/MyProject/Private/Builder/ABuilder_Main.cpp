@@ -29,10 +29,9 @@ void ABuilder_Main::BeginPlay()
 			AActor* NewLodging = IArchitect::Execute_GetLodging(UCurrentArchitect);
 			if (UCheckValidation::CheckValidationAndInterface(NewLodging, ULodging::StaticClass()))
 				{
+					NewLodging->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
 					ILodging::Execute_PrintToLogLodgingCharacteristics(NewLodging);
 				}
-			
-			NewLodging->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
 			}
 		}
 }

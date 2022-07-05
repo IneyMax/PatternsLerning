@@ -14,11 +14,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category=CheckValidation)
 	static bool CheckValidationAndInterface(UObject* TestableObject, TSubclassOf<UInterface> TestableInterface)
 	{
-		if (IsValid(TestableObject))
+		if (IsValid(TestableObject) && TestableInterface != NULL)
 		{
-			if (UKismetSystemLibrary::DoesImplementInterface(TestableObject, TestableInterface))
+			if (TestableInterface->IsChildOf(UInterface::StaticClass()))
 			{
-				return true;
+				return TestableObject->GetClass()->ImplementsInterface(TestableInterface);
 			}
 		}
 		return false;
