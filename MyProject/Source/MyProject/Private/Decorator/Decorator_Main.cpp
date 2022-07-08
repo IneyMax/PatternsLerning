@@ -1,14 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Decorator/ADecorator_Main.h"
+#include "Decorator/Decorator_Main.h"
 
 #include "Decorator/AConcreteEnemy.h"
 #include "Decorator/AMeleeEnemy.h"
 
 
 // Sets default values
-AADecorator_Main::AADecorator_Main()
+ADecorator_Main::ADecorator_Main()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
@@ -16,7 +16,7 @@ AADecorator_Main::AADecorator_Main()
 }
 
 // Called when the game starts or when spawned
-void AADecorator_Main::BeginPlay()
+void ADecorator_Main::BeginPlay()
 {
 	Super::BeginPlay();
 	

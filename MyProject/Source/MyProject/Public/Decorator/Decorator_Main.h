@@ -5,10 +5,10 @@
 #include "CoreMinimal.h"
 #include "IEnemy.h"
 #include "GameFramework/Actor.h"
-#include "ADecorator_Main.generated.h"
+#include "Decorator_Main.generated.h"
 
 UCLASS()
-class MYPROJECT_API AADecorator_Main : public AActor
+class MYPROJECT_API ADecorator_Main : public AActor
 {
 	GENERATED_BODY()
 
@@ -17,7 +17,7 @@ public:
 	
 public:	
 	// Sets default values for this actor's properties
-	AADecorator_Main();
+	ADecorator_Main();
 
 protected:
 	// Called when the game starts or when spawned

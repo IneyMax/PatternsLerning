@@ -11,4 +11,5 @@ AMeleeEnemy::AMeleeEnemy()
 void AMeleeEnemy::Fight()
 {
 	Super::Fight();
+	
 }
