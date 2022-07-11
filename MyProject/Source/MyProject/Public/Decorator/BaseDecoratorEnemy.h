@@ -5,25 +5,26 @@
 #include "CoreMinimal.h"
 #include "IEnemy.h"
 #include "GameFramework/Actor.h"
-#include "DecoratorEnemy.generated.h"
+#include "BaseDecoratorEnemy.generated.h"
 
-UCLASS()
-class MYPROJECT_API ADecoratorEnemy : public AActor, public IEnemy
+UCLASS(Abstract)
+class MYPROJECT_API ABaseEnemyDecorator : public AActor, public IEnemy
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	ADecoratorEnemy();
+	ABaseEnemyDecorator();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+protected:
+	IEnemy* DecorationEnemy;
+	
 public:
 	virtual void Fight() override;
 	
-	void SetEnemy(ADecoratorEnemy* DecoratedEnemy);
-	
-private:
-	IEnemy* DecorationEnemy;
+	void SetEnemy(IEnemy* DecoratedEnemy);
 };

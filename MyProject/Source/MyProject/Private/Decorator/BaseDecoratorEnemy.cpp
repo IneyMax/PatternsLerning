@@ -1,34 +1,30 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Decorator/DecoratorEnemy.h"
-
-#include "MyStaticClasses/CheckValidation.h"
+#include "Decorator/BaseDecoratorEnemy.h"
 
 
 // Sets default values
-ADecoratorEnemy::ADecoratorEnemy()
+ABaseEnemyDecorator::ABaseEnemyDecorator()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 }
 
 // Called when the game starts or when spawned
-void ADecoratorEnemy::BeginPlay()
+void ABaseEnemyDecorator::BeginPlay()
 {
 	Super::BeginPlay();
 	
 }
 
-void ADecoratorEnemy::Fight()
+void ABaseEnemyDecorator::Fight()
 {
-	if (DecorationEnemy)
-	{
-		DecorationEnemy->Fight();
-	}
+	DecorationEnemy->Fight();
+	UE_LOG(LogTemp, Warning, TEXT("ABaseEnemyDecorator Fight: %s"), *this->GetName());
 }
 
-void ADecoratorEnemy::SetEnemy(ADecoratorEnemy* DecoratedEnemy)
+void ABaseEnemyDecorator::SetEnemy(IEnemy* DecoratedEnemy)
 {
 	DecorationEnemy = DecoratedEnemy;
 }

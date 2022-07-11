@@ -3,18 +3,18 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "DecoratorEnemy.h"
-#include "AMeleeEnemy.generated.h"
+#include "BaseDecoratorEnemy.h"
+#include "MeleeEnemyDecorator.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class MYPROJECT_API AMeleeEnemy : public ADecoratorEnemy
+class MYPROJECT_API AMeleeEnemyDecorator : public ABaseEnemyDecorator
 {
 	GENERATED_BODY()
 
-	AMeleeEnemy();
+	AMeleeEnemyDecorator();
 
 	virtual void Fight() override;
 };

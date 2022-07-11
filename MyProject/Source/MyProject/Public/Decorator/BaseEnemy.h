@@ -5,16 +5,16 @@
 #include "CoreMinimal.h"
 #include "IEnemy.h"
 #include "GameFramework/Actor.h"
-#include "AConcreteEnemy.generated.h"
+#include "BaseEnemy.generated.h"
 
 UCLASS()
-class MYPROJECT_API AConcreteEnemy : public AActor, public IEnemy
+class MYPROJECT_API ABaseEnemy : public AActor, public IEnemy
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AConcreteEnemy();
+	ABaseEnemy();
 
 protected:
 	// Called when the game starts or when spawned

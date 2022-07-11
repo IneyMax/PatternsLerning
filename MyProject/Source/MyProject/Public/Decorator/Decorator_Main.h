@@ -13,7 +13,7 @@ class MYPROJECT_API ADecorator_Main : public AActor
 	GENERATED_BODY()
 
 public:
-	IEnemy* Enemy;
+	IEnemy* MainEnemy;
 	
 public:	
 	// Sets default values for this actor's properties

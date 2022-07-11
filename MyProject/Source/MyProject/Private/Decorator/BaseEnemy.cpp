@@ -1,10 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Decorator/AConcreteEnemy.h"
+#include "Decorator/BaseEnemy.h"
 
 // Sets default values
-AConcreteEnemy::AConcreteEnemy()
+ABaseEnemy::ABaseEnemy()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
@@ -12,14 +12,14 @@ AConcreteEnemy::AConcreteEnemy()
 }
 
 // Called when the game starts or when spawned
-void AConcreteEnemy::BeginPlay()
+void ABaseEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 	
 }
 
-void AConcreteEnemy::Fight()
+void ABaseEnemy::Fight()
 {
-	
+	UE_LOG(LogTemp, Warning, TEXT("ABaseEnemy Fight: %s"), *this->GetName());
 }
 
