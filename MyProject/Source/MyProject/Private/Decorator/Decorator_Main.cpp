@@ -57,6 +57,5 @@ void ADecorator_Main::BeginPlay()
     >GetDamage()));
     Enemy->Die();
     */
-
 }
 
